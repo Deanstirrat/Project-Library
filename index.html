@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Library</title>
+    <link rel="stylesheet" href="style.css" />
+    <script src="script.js" defer></script>
+</head>
+
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Your Library</h1>
+        </div>
+        <div class="booksGrid" id="booksGrid"></div>
+        <button class="add-btn" id="addBook">Add Book</button>
+    </div>
+    <div class="modal" id="modal">
+        <form class="newBookForm" id="newBookForm">
+            <h2>Add new book</h2>
+            <input class="input" type="text" id="title" placeholder="Title" required>
+            <input class="input" type="text" id="author" placeholder="Author" required>
+            <input class="input" type="number" id="pages" placeholder="Number of pages" required>
+            <span>
+                <label for="read">Have your read this book?</label>
+                <input class="input" type="checkbox" id="read">
+            </span>
+            <button class="submitBtn" type="submit">Submit</button>
+        </form>
+    </div>
+    <div class="overlay" id="overlay"></div>
+</body>
+
+</html>
