@@ -1,9 +1,11 @@
-function Book(title, author, pages, read) {
-  this.title = title
-  this.author = author
-  this.pages = pages
-  this.read = read
-  this.info = function () {
+class Book {
+  constructor(title, author, pages, read) {
+    this.title = title
+    this.author = author
+    this.pages = pages
+    this.read = read
+  }
+  info() {
     readRet = ""
     if (read) {
       readRet = "read"
@@ -24,7 +26,7 @@ class Library {
     this.books.push(newBook)
   }
 
-  removeBook(title){
+  removeBook(title) {
     this.books = this.books.filter((book) => book.title !== title)
   }
 
@@ -117,19 +119,24 @@ const getBookFromInput = () => {
 const addBook = (e) => {
   e.preventDefault()
   const newBook = getBookFromInput()
-  myLibrary.addBook(newBook)
-  updateBooksGrid()
-  modal.classList.remove('active');
-  overlay.classList.remove('active');
+  if (myLibrary.books.some(e => e.title === newBook.title)) {
+    alert('A book with this title already exists')
+  } else{
+    myLibrary.addBook(newBook)
+    updateBooksGrid()
+    modal.classList.remove('active');
+    overlay.classList.remove('active');
+    newBookForm.reset()
+  }
 }
 
-const deleteBook = (e) =>{
+const deleteBook = (e) => {
   const title = e.target.parentNode.firstChild.innerHTML
   myLibrary.removeBook(title)
   updateBooksGrid();
 }
 
-const toggleRead = (e) =>{
+const toggleRead = (e) => {
   const title = e.target.parentNode.firstChild.innerHTML
   const book = myLibrary.getBook(title);
   myLibrary.removeBook(title)
